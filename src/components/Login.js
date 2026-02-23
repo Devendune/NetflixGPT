@@ -4,6 +4,7 @@ import Header from "./Header";
 import { checkValidData } from "../utils/validate";
 const Login = () => {
     const [isSignInForm, setIsSignInForm] = useState(true);
+    const [errorMessage, setErrorMessage] = useState("");
     const email = useRef("");
     const password = useRef("");
 
@@ -15,11 +16,8 @@ const Login = () => {
         console.log("Email:", email.current.value);
         console.log("Password:", password.current.value);
         const validationMessage=checkValidData(email.current.value,password.current.value);
-        if(validationMessage){
-            alert(validationMessage);
-            return;
+        setErrorMessage(validationMessage);
         }
-    }
 
     return (
         <div className="header page">
@@ -32,6 +30,7 @@ const Login = () => {
                 {!isSignInForm && <input type="text" placeholder="First Name" className="p-3 m-3 text-white bg-gray-700 w-full rounded"/>}
                 <input ref={email} type="text" placeholder="Email or mobile number" className="p-3 m-3 text-white bg-gray-700 w-full rounded"/>
                 <input ref={password} type="password" placeholder="Password" className="p-3 m-3 text-white bg-gray-700 w-full rounded"/>
+                <p className="text-red-500">{errorMessage}</p>
                 <button className="p-3 m-3 w-full bg-red-600 text-white rounded hover:bg-red-700" onClick={handleButtonClick}>{ isSignInForm ? "Sign In" : "Sign Up"}</button>
                 <p className="text-white" onClick={toggleSignInForm}><span className="text-white-500 cursor-pointer">{ !isSignInForm ? "Already a user Sign in now" : "New to Netflix Sign up"}</span></p>
             </form>
