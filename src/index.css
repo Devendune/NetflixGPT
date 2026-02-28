@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Hide scrollbar for webkit browsers (Chrome, Safari, Edge) */
+.flex::-webkit-scrollbar {
+  display: none;
+}
+
+/* Ensure no scrollbar appears on any overflow-x-scroll element */
+.overflow-x-scroll::-webkit-scrollbar {
+  display: none;
+}
