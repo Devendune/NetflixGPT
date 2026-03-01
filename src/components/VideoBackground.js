@@ -6,7 +6,6 @@ const VideoBackground = ({movieId}) =>
   {
     useGetMovieVideos(movieId); 
     const trailerVideo=useSelector((store)=>store.movies.trailerVideo);
-    console.log("Trailer Video in VideoBackground",trailerVideo);
     
     if(!trailerVideo) return null;
       
